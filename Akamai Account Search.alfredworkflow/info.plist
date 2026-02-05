@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>bundleid</key>
+        <string>com.akamai.account-search</string>
+        <key>category</key>
+        <string>Tools</string>
+        <key>connections</key>
+        <dict>
+            <key>search-filter</key>
+            <array>
+                <dict>
+                    <key>destinationuid</key>
+                    <string>action-script</string>
+                    <key>modifiers</key>
+                    <integer>0</integer>
+                    <key>modifiersubtext</key>
+                    <string></string>
+                    <key>vitoaliasuid</key>
+                    <string></string>
+                </dict>
+            </array>
+            <key>action-script</key>
+            <array>
+                <dict>
+                    <key>destinationuid</key>
+                    <string>copy-clipboard</string>
+                    <key>modifiers</key>
+                    <integer>0</integer>
+                    <key>modifiersubtext</key>
+                    <string></string>
+                    <key>vitoaliasuid</key>
+                    <string></string>
+                </dict>
+            </array>
+            <key>copy-clipboard</key>
+            <array>
+                <dict>
+                    <key>destinationuid</key>
+                    <string>notification</string>
+                    <key>modifiers</key>
+                    <integer>0</integer>
+                    <key>modifiersubtext</key>
+                    <string></string>
+                    <key>vitoaliasuid</key>
+                    <string></string>
+                </dict>
+            </array>
+        </dict>
+        <key>createdby</key>
+        <string>Akamai</string>
+        <key>description</key>
+        <string>Search for Akamai account switch keys using the IAM API</string>
+        <key>disabled</key>
+        <false/>
+        <key>name</key>
+        <string>Akamai Account Search</string>
+        <key>objects</key>
+        <array>
+            <dict>
+                <key>config</key>
+                <dict>
+                    <key>alfredfiltersresults</key>
+                    <false/>
+                    <key>alfredfiltersresultsmatchmode</key>
+                    <integer>0</integer>
+                    <key>argumenttreatemptyqueryasnil</key>
+                    <false/>
+                    <key>argumenttrimmode</key>
+                    <integer>0</integer>
+                    <key>argumenttype</key>
+                    <integer>0</integer>
+                    <key>escaping</key>
+                    <integer>102</integer>
+                    <key>keyword</key>
+                    <string>akamai</string>
+                    <key>queuedelaycustom</key>
+                    <integer>3</integer>
+                    <key>queuedelayimmediatelyinitially</key>
+                    <true/>
+                    <key>queuedelaymode</key>
+                    <integer>0</integer>
+                    <key>queuemode</key>
+                    <integer>1</integer>
+                    <key>runningsubtext</key>
+                    <string>Searching...</string>
+                    <key>script</key>
+                    <string>/usr/bin/env python3 ./search.py {query}</string>
+                    <key>scriptargtype</key>
+                    <integer>0</integer>
+                    <key>scriptfile</key>
+                    <string></string>
+                    <key>subtext</key>
+                    <string>Search for Akamai account switch keys</string>
+                    <key>title</key>
+                    <string>Akamai Account Search</string>
+                    <key>type</key>
+                    <integer>0</integer>
+                    <key>withspace</key>
+                    <true/>
+                </dict>
+                <key>type</key>
+                <string>alfred.workflow.input.scriptfilter</string>
+                <key>uid</key>
+                <string>search-filter</string>
+                <key>version</key>
+                <integer>3</integer>
+            </dict>
+            <dict>
+                <key>config</key>
+                <dict>
+                    <key>concurrently</key>
+                    <false/>
+                    <key>escaping</key>
+                    <integer>102</integer>
+                    <key>script</key>
+                    <string>/usr/bin/env python3 ./action.py "{query}"</string>
+                    <key>scriptargtype</key>
+                    <integer>0</integer>
+                    <key>scriptfile</key>
+                    <string></string>
+                    <key>type</key>
+                    <integer>0</integer>
+                </dict>
+                <key>type</key>
+                <string>alfred.workflow.action.script</string>
+                <key>uid</key>
+                <string>action-script</string>
+                <key>version</key>
+                <integer>2</integer>
+            </dict>
+            <dict>
+                <key>config</key>
+                <dict>
+                    <key>autopaste</key>
+                    <false/>
+                    <key>clipboardtext</key>
+                    <string>{query}</string>
+                    <key>transient</key>
+                    <false/>
+                </dict>
+                <key>type</key>
+                <string>alfred.workflow.output.clipboard</string>
+                <key>uid</key>
+                <string>copy-clipboard</string>
+                <key>version</key>
+                <integer>3</integer>
+            </dict>
+            <dict>
+                <key>config</key>
+                <dict>
+                    <key>lastpathcomponent</key>
+                    <false/>
+                    <key>onlyshowifquerypopulated</key>
+                    <true/>
+                    <key>removeextension</key>
+                    <false/>
+                    <key>text</key>
+                    <string>Copied to clipboard</string>
+                    <key>title</key>
+                    <string>{query}</string>
+                </dict>
+                <key>type</key>
+                <string>alfred.workflow.output.notification</string>
+                <key>uid</key>
+                <string>notification</string>
+                <key>version</key>
+                <integer>1</integer>
+            </dict>
+        </array>
+        <key>readme</key>
+        <string># Akamai Account Search
+
+Search for Akamai account switch keys using the IAM API.
+
+## Requirements
+
+- Python 3 with edgegrid-python: `pip3 install edgegrid-python requests`
+- Valid Akamai API credentials in your .edgerc file
+- Alfred Powerpack
+
+## Setup
+
+1. Install the workflow by double-clicking the .alfredworkflow file
+2. Click the [x] icon in the workflow to open Settings
+3. Enter your Client ID (required)
+4. Optionally change EdgeRC path and section
+
+## Usage
+
+- `akamai &lt;search&gt;` - Search for accounts by name (minimum 3 characters)
+
+## Actions
+
+- **Enter** - Copy account switch key to clipboard
+- **Option+Enter** - Copy account name to clipboard</string>
+        <key>uidata</key>
+        <dict>
+            <key>search-filter</key>
+            <dict>
+                <key>xpos</key>
+                <integer>100</integer>
+                <key>ypos</key>
+                <integer>100</integer>
+            </dict>
+            <key>action-script</key>
+            <dict>
+                <key>xpos</key>
+                <integer>350</integer>
+                <key>ypos</key>
+                <integer>100</integer>
+            </dict>
+            <key>copy-clipboard</key>
+            <dict>
+                <key>xpos</key>
+                <integer>600</integer>
+                <key>ypos</key>
+                <integer>100</integer>
+            </dict>
+            <key>notification</key>
+            <dict>
+                <key>xpos</key>
+                <integer>850</integer>
+                <key>ypos</key>
+                <integer>100</integer>
+            </dict>
+        </dict>
+        <key>userconfigurationconfig</key>
+        <array>
+            <dict>
+                <key>config</key>
+                <dict>
+                    <key>default</key>
+                    <string></string>
+                    <key>placeholder</key>
+                    <string>Enter your API client ID</string>
+                    <key>required</key>
+                    <true/>
+                </dict>
+                <key>description</key>
+                <string>Your Akamai API client ID (found in Identity &amp; Access Management)</string>
+                <key>label</key>
+                <string>Client ID</string>
+                <key>type</key>
+                <string>textfield</string>
+                <key>variable</key>
+                <string>client_id</string>
+            </dict>
+            <dict>
+                <key>config</key>
+                <dict>
+                    <key>default</key>
+                    <string>~/.edgerc</string>
+                    <key>placeholder</key>
+                    <string>~/.edgerc</string>
+                    <key>required</key>
+                    <false/>
+                </dict>
+                <key>description</key>
+                <string>Path to your .edgerc credentials file</string>
+                <key>label</key>
+                <string>EdgeRC Path</string>
+                <key>type</key>
+                <string>textfield</string>
+                <key>variable</key>
+                <string>edgerc_path</string>
+            </dict>
+            <dict>
+                <key>config</key>
+                <dict>
+                    <key>default</key>
+                    <string>default</string>
+                    <key>placeholder</key>
+                    <string>default</string>
+                    <key>required</key>
+                    <false/>
+                </dict>
+                <key>description</key>
+                <string>Section name in your .edgerc file</string>
+                <key>label</key>
+                <string>EdgeRC Section</string>
+                <key>type</key>
+                <string>textfield</string>
+                <key>variable</key>
+                <string>edgerc_section</string>
+            </dict>
+        </array>
+        <key>version</key>
+        <string>1.0.0</string>
+        <key>webaddress</key>
+        <string>https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys</string>
+    </dict>
+</plist>

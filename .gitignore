@@ -1,0 +1,38 @@
+# Byte-compiled files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+*.swp
+
+# Virtual environment
+venv/
+env/
+.venv/
+.claude/
+# Use # to uncomment the below if using pipenv
+# .pipenv/
+
+# Distribution / packaging
+.Python
+build/
+dist/
+wheels/
+*.egg-info/
+*.egg
+
+# Testing and linting
+.pytest_cache/
+.ruff_cache/
+
+# Editors and IDEs
+.idea/  # popular for PyCharm projects
+.vscode/ # popular for VS Code projects
+*.sublime-project
+*.sublime-workspace
+
+# OS and miscellaneous
+*.log
+*.temp
+.project
+.settings

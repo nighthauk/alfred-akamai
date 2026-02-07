@@ -158,6 +158,34 @@ python3 search.py "test"
 
 This creates `Akamai-Account-Search.alfredworkflow` in the project root.
 
+## Releasing
+
+This project uses [semantic versioning](https://semver.org/) (MAJOR.MINOR.PATCH). The git tag is the single source of truth for the version — the CI stamps it into `info.plist` at build time.
+
+### Creating a Release
+
+1. Tag the commit with a `v`-prefixed semver:
+   ```bash
+   git tag v1.1.0
+   git push origin v1.1.0
+   ```
+2. GitHub Actions will automatically:
+   - Update the version in `info.plist`
+   - Build the `.alfredworkflow` package
+   - Create a GitHub Release with the artifact attached and auto-generated release notes
+
+### Downloading
+
+Go to the [Releases](https://github.com/yourusername/alfred-akamai/releases) page and download the `.alfredworkflow` file from the latest release.
+
+### Version Bumping Guide
+
+| Change type | Example |
+|-------------|---------|
+| Breaking/incompatible changes | `v1.0.0` → `v2.0.0` |
+| New features (backward-compatible) | `v1.0.0` → `v1.1.0` |
+| Bug fixes | `v1.0.0` → `v1.0.1` |
+
 ## Contributing
 
 1. Fork the repository

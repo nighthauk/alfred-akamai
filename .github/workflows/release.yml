@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Stamp version into info.plist
+        run: |
+          VERSION="${{ steps.version.outputs.VERSION }}"
+          PLIST="Akamai Account Search.alfredworkflow/info.plist"
+          # Replace the workflow-level version string (last occurrence)
+          awk -v ver="$VERSION" '
+            prev ~ /<key>version<\/key>/ && /<string>[^<]*<\/string>/ {
+              sub(/<string>[^<]*<\/string>/, "<string>" ver "</string>")
+            }
+            { prev = $0; print }
+          ' "$PLIST" > tmp_plist && mv tmp_plist "$PLIST"
+
+      - name: Verify version was updated
+        run: grep -A1 '<key>version</key>' "Akamai Account Search.alfredworkflow/info.plist" | tail -1
+
+      - name: Build workflow
+        run: ./build.sh
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: Akamai-Account-Search.alfredworkflow

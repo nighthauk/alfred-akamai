@@ -6,6 +6,9 @@ A productivity workflow for [Alfred](https://www.alfredapp.com/) that enables qu
 
 This workflow allows you to search for and quickly copy Akamai account switch keys directly from Alfred's search bar. It's designed for developers, DevOps engineers, and anyone working with multiple Akamai accounts who needs to frequently access account switch keys for API operations or CLI tools.
 
+> [!IMPORTANT]
+> This workflow requires an Akamai API client with proper IAM permissions to access account information, and likely only useful for Akamai employees or partners with access to the full IAM API.
+
 ## Features
 
 - **Fast Search**: Query Akamai accounts by name with real-time results

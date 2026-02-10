@@ -69,6 +69,9 @@ client_token = your_client_token
 4. Optionally adjust the **edgerc Path** (default: `~/.edgerc`)
 5. Optionally adjust the **edgerc Section** (default: `default`)
 
+<img width="1523" height="1224" alt="Screenshot 2026-02-09 at 22 06 32" src="https://github.com/user-attachments/assets/e9c6aacd-fb18-4af8-82c4-7a712889d55f" />
+<img width="1771" height="1224" alt="Screenshot 2026-02-09 at 22 07 33" src="https://github.com/user-attachments/assets/d8db3f96-db86-4d55-b93a-f6eebcec459d" />
+
 ## Usage
 
 1. Open Alfred (Cmd+Space)

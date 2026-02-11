@@ -90,8 +90,8 @@ client_token = your_client_token
 ### Example
 
 ```
-# Search for accounts containing "production"
-akamai production
+# Search for accounts containing "internal"
+akamai internal
 
 # Search for a specific customer
 akamai acme corp

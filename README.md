@@ -28,14 +28,14 @@ This workflow allows you to search for and quickly copy Akamai account switch ke
 
 ### Option 1: Pre-built Workflow
 
-1. Download the latest `Akamai-Account-Search.alfredworkflow` from the [releases page](https://github.com/yourusername/alfred-akamai/releases)
+1. Download the latest `Akamai-Account-Search.alfredworkflow` from the [releases page](https://github.com/nighthauk/alfred-akamai/releases)
 2. Double-click the downloaded file to install
 3. Configure your credentials (see Setup below)
 
 ### Option 2: Build from Source
 
 ```bash
-git clone https://github.com/yourusername/alfred-akamai.git
+git clone https://github.com/nighthauk/alfred-akamai.git
 cd alfred-akamai
 ./build.sh
 # Double-click Akamai-Account-Search.alfredworkflow
@@ -182,7 +182,7 @@ This project uses [semantic versioning](https://semver.org/) (MAJOR.MINOR.PATCH)
 
 ### Downloading
 
-Go to the [Releases](https://github.com/yourusername/alfred-akamai/releases) page and download the `.alfredworkflow` file from the latest release.
+Go to the [Releases](https://github.com/nighthauk/alfred-akamai/releases) page and download the `.alfredworkflow` file from the latest release.
 
 ### Version Bumping Guide
 

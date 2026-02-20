@@ -36,7 +36,8 @@ def search_accounts(query, config):
     """Search for account switch keys via API."""
     try:
         auth = EdgeGridAuth.from_edgerc(config['edgerc_path'], config['edgerc_section'])
-        path = f"/identity-management/v3/api-clients/{config['client_id']}/account-switch-keys"
+        client_id = config['client_id'] or 'self'
+        path = f"/identity-management/v3/api-clients/{client_id}/account-switch-keys"
         params = {'search': query}
         response = auth.make_request('GET', path, params=params)
 
@@ -53,14 +54,29 @@ def search_accounts(query, config):
             for acc in accounts:
                 name = acc.get('accountName', 'Unknown')
                 key = acc.get('accountSwitchKey', '')
+
+                mods = {
+                    "alt": {"subtitle": "Copy account name", "arg": name}
+                }
+
+                parts = key.split(':') if key else []
+                if len(parts) == 2 and parts[0] and parts[1]:
+                    account_id, contract_type_id = parts[0], parts[1]
+                    url = (
+                        f"https://control.akamai.com/apps/security-analytics"
+                        f"?accountId={account_id}&contractTypeId={contract_type_id}"
+                    )
+                    mods["ctrl"] = {
+                        "subtitle": "Open in Akamai Control Center",
+                        "arg": f"open::{url}"
+                    }
+
                 items.append({
                     "title": name,
                     "subtitle": key,
                     "arg": key,
                     "valid": True,
-                    "mods": {
-                        "alt": {"subtitle": "Copy account name", "arg": name}
-                    },
+                    "mods": mods,
                     "text": {"copy": key, "largetype": f"{name}\n{key}"}
                 })
             return alfred_output(items)
@@ -87,15 +103,6 @@ def main():
         print(alfred_output([alfred_item(
             "Search for accounts...",
             "Type an account name to search",
-            valid=False
-        )]))
-        return
-
-    # Check configuration
-    if not config['client_id']:
-        print(alfred_output([alfred_item(
-            "Configuration Required",
-            "Open workflow settings to set Client ID (click [x] icon)",
             valid=False
         )]))
         return

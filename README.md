@@ -14,8 +14,9 @@ This workflow allows you to search for and quickly copy Akamai account switch ke
 - **Fast Search**: Query Akamai accounts by name with real-time results
 - **One-Click Copy**: Press Enter to copy the account switch key to clipboard
 - **Alternative Copy**: Hold Option+Enter to copy the account name instead
+- **Quick Access**: Hold Ctrl+Enter to open the account directly in Akamai Control Center
 - **Secure Authentication**: Uses Akamai's official EdgeGrid authentication
-- **Configurable**: Customizable edgerc path and section
+- **Configurable**: Customizable edgerc path, section, and client ID
 
 ## Requirements
 
@@ -65,7 +66,7 @@ client_token = your_client_token
 
 1. Open Alfred and search for "Akamai Account Search"
 2. Click the **[x]** icon to open workflow settings
-3. Enter your **Client ID** (required) - found in Akamai Identity & Access Management
+3. Optionally set a **Client ID** — defaults to `self`, which queries your own API client's accessible accounts. Enter a specific client ID to query a different API client's accounts instead.
 4. Optionally adjust the **edgerc Path** (default: `~/.edgerc`)
 5. Optionally adjust the **edgerc Section** (default: `default`)
 
@@ -85,7 +86,11 @@ client_token = your_client_token
 |-----|--------|
 | **Enter** | Copy account switch key |
 | **Option+Enter** | Copy account name |
+| **Ctrl+Enter** | Open account in Akamai Control Center |
 | **Escape** | Dismiss results |
+
+> [!NOTE]
+> **Ctrl+Enter** is only available for results where the account switch key contains both an account ID and a contract type ID (e.g. `1-F78E:1-2RBL`). Results missing either value will not show this option.
 
 ### Example
 
@@ -130,9 +135,6 @@ This workflow uses the [Akamai IAM API](https://techdocs.akamai.com/iam-api/refe
 - **Parameters**: `search` (account name filter)
 
 ## Troubleshooting
-
-### "Client ID Required" Error
-- Open workflow settings and ensure your Client ID is correctly entered
 
 ### "Edgerc Not Found" Error
 - Verify your `~/.edgerc` file exists and contains valid credentials

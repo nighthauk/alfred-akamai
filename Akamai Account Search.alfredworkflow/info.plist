@@ -49,7 +49,7 @@
             </array>
         </dict>
         <key>createdby</key>
-        <string>Akamai</string>
+        <string>Ryan Hauk</string>
         <key>description</key>
         <string>Search for Akamai account switch keys using the IAM API</string>
         <key>disabled</key>
@@ -184,7 +184,7 @@ Search for Akamai account switch keys using the IAM API.
 
 1. Install the workflow by double-clicking the .alfredworkflow file
 2. Click the [x] icon in the workflow to open Settings
-3. Enter your Client ID (required)
+3. Optionally set a Client ID (defaults to "self" if left empty)
 4. Optionally change EdgeRC path and section
 
 ## Usage
@@ -194,7 +194,8 @@ Search for Akamai account switch keys using the IAM API.
 ## Actions
 
 - **Enter** - Copy account switch key to clipboard
-- **Option+Enter** - Copy account name to clipboard</string>
+- **Option+Enter** - Copy account name to clipboard
+- **Ctrl+Enter** - Open account directly in Akamai Control Center (only available when the account switch key contains both an account ID and contract type ID)</string>
         <key>uidata</key>
         <dict>
             <key>search-filter</key>
@@ -232,14 +233,14 @@ Search for Akamai account switch keys using the IAM API.
                 <key>config</key>
                 <dict>
                     <key>default</key>
-                    <string></string>
+                    <string>self</string>
                     <key>placeholder</key>
-                    <string>Enter your API client ID</string>
+                    <string>self</string>
                     <key>required</key>
-                    <true/>
+                    <false/>
                 </dict>
                 <key>description</key>
-                <string>Your Akamai API client ID (found in Identity &amp; Access Management)</string>
+                <string>The API client ID to use when listing account switch keys. Use "self" (the default) to query your own client's accessible accounts, or enter a specific client ID to query a different client ID's accounts.</string>
                 <key>label</key>
                 <string>Client ID</string>
                 <key>type</key>
@@ -287,8 +288,8 @@ Search for Akamai account switch keys using the IAM API.
             </dict>
         </array>
         <key>version</key>
-        <string>1.0.0</string>
+        <string>1.0.2</string>
         <key>webaddress</key>
-        <string>https://techdocs.akamai.com/iam-api/reference/get-client-account-switch-keys</string>
+        <string>https://github.com/nighthauk</string>
     </dict>
 </plist>

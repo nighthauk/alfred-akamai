@@ -90,7 +90,7 @@ client_token = your_client_token
 | **Escape** | Dismiss results |
 
 > [!NOTE]
-> **Ctrl+Enter** is only available for results where the account switch key contains both an account ID and a contract type ID (e.g. `1-F78E:1-2RBL`). Results missing either value will not show this option.
+> **Ctrl+Enter** is only available for results where the account switch key contains both an account ID and a contract type ID (e.g. `1-ABCD:Z-XYZ`). Results missing either value will not show this option.
 
 ### Example
 

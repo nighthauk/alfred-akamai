@@ -23,6 +23,7 @@ wheels/
 
 # Built workflow artifact
 *.alfredworkflow
+!Akamai Account Search.alfredworkflow/
 
 # Testing and linting
 .pytest_cache/
@@ -33,7 +34,7 @@ wheels/
 .vscode/ # popular for VS Code projects
 *.sublime-project
 *.sublime-workspace
-
+.vscode/
 # OS and miscellaneous
 *.log
 *.temp

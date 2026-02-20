@@ -288,7 +288,7 @@ Search for Akamai account switch keys using the IAM API.
             </dict>
         </array>
         <key>version</key>
-        <string>1.0.2</string>
+        <string>1.1</string>
         <key>webaddress</key>
         <string>https://github.com/nighthauk</string>
     </dict>
